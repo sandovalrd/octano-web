@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Nav from "../src/components/Nav";
+import Game from "../src/components/Game";
+import Player from "./components/Player";
+import Move from "../src/components/Move";
+import Play from "./components/Play";
+import MoveConfig from "./components/MoveConfig";
+import { Container } from "semantic-ui-react";
+import { Router, Route } from "react-router-dom";
+import history from "./history";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router history={history}>
+        <Nav />
+        <Route path="/" exact component={Play} />
+        <Route path="/games" exact component={Game} />
+        <Route path="/players" exact component={Player} />
+        <Route path="/moves" exact component={Move} />
+        <Route path="/config" exact component={MoveConfig} />
+      </Router>
+    </Container>
   );
 }
 
